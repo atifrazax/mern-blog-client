@@ -42,7 +42,7 @@ function SingleBlog() {
     <section className="bg-white py-10">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Outer flex */}
-                <div className="grid grid-cols-[4fr_2fr] gap-x-8">
+                <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-8">
                     
                     {/* BLOGS SECTION */}
                     <div className="w-full">
@@ -56,7 +56,7 @@ function SingleBlog() {
                                         <small className="flex"><img src={calender} className="w-4 h-auto me-2" alt="" aria-hidden={true} />{blog?.createdAt?.slice(0, 10)}</small>
                                         <small className="flex"><img src={comment} className="w-4 h-auto me-2" alt="" aria-hidden={true} />{blog?.comments?.length || 0}</small>
                                     </div>
-                                    <h2 className=" mb-4 text-primary">{blog?.title}</h2>
+                                    <h2 className="mb-4 text-2xl sm:text-4xl text-primary">{blog?.title}</h2>
                                     <article className="text-gray mb-4">
                                         {blog.content.split("\n").map((line, i) => (
                                             <span key={i}>
@@ -85,7 +85,7 @@ function SingleBlog() {
                     </div>
                     <div>
                         {/* ASIDE SECTION */}
-                        {/* <Aside blogs={blogs}/> */}
+                        {/* <Aside blogs={blogs}/> */} // TODO
                     </div>
                 </div>
             </div>

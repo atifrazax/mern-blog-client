@@ -1,21 +1,26 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/useAuth";
 import { toast } from "react-toastify";
 
 function LikeBtn({blog}) {
     const { user } = useAuth();
-    const [isLiked, setIsLiked] = useState(blog?.likes?.includes(user?.id));
+    const [isLiked, setIsLiked] = useState(blog?.likes?.includes(user?.id) || false);
     // console.log(isLiked);
     const [likeCount, setLikeCount] = useState(blog?.likeCount || 0);
     const [loading, setLoading] = useState(false);
     const message = (data) => toast.error(data);
+
+    useEffect(() => { 
+        setIsLiked(blog?.likes?.includes(user?._id)); 
+        setLikeCount(blog?.likeCount || 0); 
+    },[ blog?.likes, user?._id, blog?.likeCount ]);
     const handleLikeBtn = async () => {
         if (!user) return message("Love it? Please login first");
             try {
                 setLoading(true);
-                setIsLiked(!isLiked);
-                setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+                setIsLiked(prev => !prev);
+                setLikeCount(prev => prev + (isLiked ? -1 : 1));
                 await axios.put(`${import.meta.env.VITE_API_URL}/like/${blog._id}`, {}, {
                     withCredentials: true
                 });

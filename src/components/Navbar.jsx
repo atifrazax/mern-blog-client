@@ -12,7 +12,7 @@ export const Navbar = () => {
 
   return (
     <div className="bg-gray">
-      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
+      <div className="px-4 py-3 sm:py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <NavLink
             to="/"
@@ -20,8 +20,8 @@ export const Navbar = () => {
             title="BlogDom"
             className="inline-flex items-center"
           >
-            <img src="/icon.png" alt="" className="w-10 h-auto"/>
-            <span className="text-3xl font-bold tracking-wider bg-linear-to-r from-white via-primary to-primary bg-clip-text hover:bg-linear-to-l hover:from-white hover:via-primary hover:to-primary text-transparent transition-all duration-300 uppercase">
+            <img src="/icon.png" alt="" className="w-7 sm:w-10 h-auto"/>
+            <span className="text-2xl sm:text-3xl font-bold tracking-wider bg-linear-to-r from-white via-primary to-primary bg-clip-text hover:bg-linear-to-l hover:from-white hover:via-primary hover:to-primary text-transparent transition-all duration-300 uppercase">
               logDom
             </span>
           </NavLink>
