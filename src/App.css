@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+    --color-white: #FAFAF9;  
+    --color-gray: #374151;
+    --color-primary: #10B981; 
+    --color-secondary: #6EE7B7; 
+    --color-highlight: #FBBF24; 
+    
+    --font-dm: 'DM Serif Display', serif;
+    --font-nunito: 'Nunito Sans', sans-serif;
+}
+
+@layer base {
+    body {
+      color: var(--color-white);
+      font-family: var(--font-nunito);
+      font-weight: 400;
+      font-size: 1.05rem;
+    }
+    h1{
+      /* color: var(--color-primary); */
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 3rem;
+    }
+    h2{
+      /* color: var(--color-primary); */
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 2.5rem;
+    }
+    h3{
+      /* color: var(--color-primary); */
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 1.8rem;
+    }
+    h4{
+      /* color: var(--color-primary); */
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 1.4rem;
+    }
+    h5{
+      /* color: var(--color-primary); */
+      font-family: var(--font-dm);
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+}
