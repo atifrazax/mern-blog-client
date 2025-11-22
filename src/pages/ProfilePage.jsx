@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { useAuth } from "../contexts/useAuth";
 import axios from "axios";
 
 
 export default function ProfilePage() {
-  const navigate = useNavigate();
-  const location = useLocation();
   
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -16,12 +13,6 @@ export default function ProfilePage() {
   
   const {user, setUser} = useAuth(); // get user from context
   
-  useEffect(() => {
-    if(!user) return navigate("/signin", {state: {message: "Your session has expired. Please log in again."}});
-    if (location.state?.message) {
-      setMessage(location.state.message);
-    }
-  }, [location.state, navigate, user]);
     const handleSubmit = async (e) => {
       e.preventDefault();
       setLoading(true);
@@ -38,7 +29,6 @@ export default function ProfilePage() {
         setMessage(data.message);
         setName('');
         setPassword('');
-        // navigate("/profile");
       } catch (error) {
         setMessage(error.message);
         // console.error(error);

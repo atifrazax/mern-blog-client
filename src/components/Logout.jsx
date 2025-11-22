@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const logout = async (setUser) => {
+export const logout = async (setUser, navigate) => {
   const message = "Successfully logged out";
   try {
     await axios.post(
@@ -9,6 +9,7 @@ export const logout = async (setUser) => {
       {}, 
       { withCredentials: true });
     setUser(null);
+    navigate("/", {replace: true});
     toast.info(message);
 
   } catch (error) {

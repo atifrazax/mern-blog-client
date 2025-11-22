@@ -17,15 +17,23 @@ export const uploadToCloudinary = async (file) => {
   formData.append("signature", signature.signature);
   formData.append("timestamp", signature.timestamp);
   formData.append("api_key", signature.apiKey);
-  formData.append("cloud_name", signature.cloudName);
-  // formData.append('folder', 'mern-blog-1');
+  // options
+  formData.append("allowed_formats", signature.allowed_formats);
+  formData.append("folder", "mern-blog-1");
   const url = `https://api.cloudinary.com/v1_1/${signature.cloudName}/image/upload`;
   try {
     const uploadRes = await axios.post(url, formData);
     const data = await uploadRes.data;
-    // console.log("Uploaded to Cloudinary", data);
-    return { imageUrl: data.secure_url, imagePublicId: data.public_id };
-  } catch (error) {
-    console.log("Error uploading to Cloudinary", error);
+    console.log("Uploaded to Cloudinary", data);
+    return {
+      success: true,
+      imageUrl: data.secure_url,
+      imagePublicId: data.public_id,
+    };
+  } catch {
+    return {
+      success: false,
+      message: "Image upload failed. Please try again.",
+    };
   }
 };

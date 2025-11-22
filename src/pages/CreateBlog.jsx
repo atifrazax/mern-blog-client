@@ -30,9 +30,14 @@ export default function CreateBlog() {
         let imageUrl, imagePublicId;
         if(file) {
           const res = await uploadToCloudinary(file);
-          imageUrl = res.imageUrl;
-          imagePublicId = res.imagePublicId;        
-          // console.log(imageUrl, imagePublicId);
+          if(!res.success) {
+            setError(res.message);
+            return;
+          } else {
+            imageUrl = res.imageUrl;
+            imagePublicId = res.imagePublicId;        
+            // console.log(imageUrl, imagePublicId); 
+          }
         }
         if (!title || !content) {
           setError("Please Add Title and Content");
@@ -58,7 +63,7 @@ export default function CreateBlog() {
 
         navigate("/my-blogs");
       } catch (error) {
-        setError(error.response?.data?.message || "Login failed");
+        setError(error.response?.data?.message || "Something went wrong. Please try again.");
       } finally {
         setUploading(false);
       }

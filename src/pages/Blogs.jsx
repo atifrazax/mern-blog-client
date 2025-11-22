@@ -90,7 +90,7 @@ useEffect(() => {
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="absolute inset-y-0 right-0 w-9 border rounded border-gray-300 text-gray-700 px-2"
+                className="absolute inset-y-0 right-0 w-10 sm:w-9 border rounded border-gray-300 text-gray-700 px-2"
               />
               </div>
             </div>

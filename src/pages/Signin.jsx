@@ -33,7 +33,7 @@ export default function Login() {
         const data = res.data;
 
         setUser(data.user);
-        navigate("/my-blogs");
+        navigate("/my-blogs", {replace: true});
       } catch (error) {
         setError(error.response?.data?.message || "Login failed");
       } finally {
@@ -48,9 +48,9 @@ export default function Login() {
                 <h1 className='text-red-custom mb-15 text-center text-primary'>Sign In</h1>
                  <form onSubmit={handleSubmit} className='flex flex-col gap-4 relative *:text-gray'>
 
-                    <input value={email} onChange={e=>setEmail(e.target.value)} id='email' type="email" placeholder='Your Email' className='shadow py-4 px-10 rounded-lg'/>
+                    <input value={email} onChange={e=>setEmail(e.target.value)} id='email' autoComplete="true" type="email" placeholder='Your Email' className='shadow py-4 px-10 rounded-lg'/>
 
-                    <input value={password} onChange={e=>setPassword(e.target.value)} id='password' type="password" placeholder='Your Password' className='shadow py-4 px-10 rounded-lg'/>
+                    <input value={password} onChange={e=>setPassword(e.target.value)} id='password' autoComplete="true" type="password" placeholder='Your Password' className='shadow py-4 px-10 rounded-lg'/>
 
                     {error && <small className='text-red-400!'>{error}</small>}
 

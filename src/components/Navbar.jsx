@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/useAuth";
 import logoutSvg from "../assets/icons/logout.svg"
 import { logout } from "./Logout";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const activeClass = ({ isActive }) => (isActive ? "text-secondary" : "")
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -73,7 +74,7 @@ export const Navbar = () => {
             </li>
             <li>
               <NavLink
-                onClick={()=>logout(setUser)}
+                onClick={()=>logout(setUser, navigate)}
                 className={activeClass}
                 title="Logout"
               >
@@ -212,7 +213,7 @@ export const Navbar = () => {
                         </li>
                         <li>
                           <NavLink
-                            onClick={()=>logout(setUser)}
+                            onClick={()=>logout(setUser, navigate)}
                             className={activeClass}
                             title="Logout"
                           >
