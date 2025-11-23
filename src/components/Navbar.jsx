@@ -66,7 +66,7 @@ export const Navbar = () => {
                 aria-label="Sign up"
                 title="Sign up"
               >
-                <img src={`https://api.dicebear.com/9.x/initials/svg?seed=${user.name}`}
+                <img src={user?.photo || `https://api.dicebear.com/9.x/initials/svg?seed=${user?.name}`}
                 alt="avatar"
                 className="w-10 h-auto rounded-full"
                 ></img>
@@ -204,7 +204,7 @@ export const Navbar = () => {
                             className={activeClass}
                             title="Profile"
                           >
-                            <img src={`https://api.dicebear.com/9.x/initials/svg?seed=${user.name}`}
+                            <img src={user?.photo || `https://api.dicebear.com/9.x/initials/svg?seed=${user?.name}`}
                             alt="avatar"
                             aria-label="avatar"
                             className="w-10 h-auto rounded-full"

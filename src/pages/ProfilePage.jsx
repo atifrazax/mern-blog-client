@@ -44,7 +44,7 @@ export default function ProfilePage() {
                  <form onSubmit={handleSubmit} className='flex flex-col gap-4 relative *:text-gray'>
                   
                   <div className="flex flex-col items-center gap-4 pb-2">
-                    <img src={`https://api.dicebear.com/9.x/initials/svg?seed=${user?.name}`}
+                    <img src={user?.photo || `https://api.dicebear.com/9.x/initials/svg?seed=${user?.name}`}
                     alt="avatar"
                     className="w-24 h-auto rounded-full"
                     ></img>

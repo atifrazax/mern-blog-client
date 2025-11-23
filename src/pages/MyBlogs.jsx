@@ -26,24 +26,24 @@ export default function MyBlogs() {
       setLoading(false);
     }
   }, [navigate]); 
-  useEffect(() => {
+  useEffect(() => { 
     getMyBlogs();
   }, [getMyBlogs]);
   if(loading) return <Loader />;
   return (
-    <section className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <section className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 '>
         <div className='flex flex-col'>
             <h1 className='text-gray text-center py-10'>My Blogs</h1>
             <div className='flex justify-end'>
                 <Link to='/new-blog' className='bg-primary hover:bg-secondary hover:text-gray px-4 py-2 rounded'>Create New Blog</Link>
             </div>
         </div>
-        {myBlogs ? (
+        {myBlogs.length > 0 ? (
             myBlogs.map((blog) => (
                 <Blog key={blog._id} blog={blog} update={true} refetch={getMyBlogs}/>
             ))
         ) : (
-        <h2 className='text-center text-gray h-screen pt-40'>No Blog Found</h2>
+        <h4 className='text-center text-gray  py-40'>No Blog Found</h4>
         )}
     </section>
   )

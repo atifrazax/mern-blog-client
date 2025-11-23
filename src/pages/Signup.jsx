@@ -32,6 +32,11 @@ export default function Signup() {
           setLoading(false);
         }
       };
+       // Google SignUp
+    const googleSignup = async (e) => {
+      e.preventDefault();
+      window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
+    }
   return (
     <section>
         <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 min-h-screen py-10'>
@@ -54,6 +59,15 @@ export default function Signup() {
                     '>
                       {loading ? "Signing Up..." : "Sign Up"}
                     </button>
+                    <button
+                    onClick={googleSignup}
+                    disabled={loading} 
+                    className='flex shadow-md bg-white border border-gray hover:border-primary py-2 px-6 rounded-lg
+                     text-gray transition-all mt-0
+                     duration-300 disabled:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed
+                     '><img src="google-icon.svg" alt="" className="w-6 h-auto me-3"/>
+                     Sign up with Google
+                     </button>
 
                     <small className='text-center text-gray-400 mt-4'>Already have an account? <Link to="/signin" className='text-primary'>Sign In</Link></small>
 

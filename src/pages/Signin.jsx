@@ -40,7 +40,11 @@ export default function Login() {
         setLoading(false);
       }
     };
-
+    // Google SignIn
+    const googleSignin = async (e) => {
+      e.preventDefault();
+      window.location.href = `${import.meta.env.VITE_API_URL}/auth/google`;
+    }
   return (
     <section>
         <div className='container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 min-h-screen'>
@@ -57,11 +61,20 @@ export default function Login() {
                     <button 
                     disabled={loading} 
                     type="submit" 
-                    className='shadow bg-primary hover:bg-secondary hover:text-gray py-2 px-10 rounded-lg bg-gray-custom
-                     text-white! hover:bg-red-custom transition-all mt-4
+                    className='shadow bg-primary hover:bg-secondary py-2 px-10 rounded-lg
+                     text-white! transition-all mt-4
                      duration-300 disabled:opacity-50 disabled:cursor-not-allowed
                      '>
                      {loading ? "Signing In..." : "Sign In"}
+                     </button>
+                    <button
+                    disabled={loading}
+                    onClick={googleSignin}
+                    className='flex shadow-md bg-white border border-gray hover:border-primary py-2 px-6 rounded-lg
+                     text-gray transition-all mt-0
+                     duration-300 disabled:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed
+                     '><img src="google-icon.svg" alt="" className="w-6 h-auto me-3"/>
+                     Continue with Google
                      </button>
 
                     <small className='text-center text-gray-400 mt-4'>Don't have an account? <Link to="/signup" className='text-primary'>Sign Up</Link></small>
