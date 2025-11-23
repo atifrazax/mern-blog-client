@@ -2,37 +2,37 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {useAuth} from "../contexts/useAuth.js";
+import getUser from "../utils/getUser";
 
 
 export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const { setUser } = useAuth();
+  const { user, setUser } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
   useEffect(() => {
+    if(user) return navigate("/my-blogs", {replace: true});
     if (location.state?.message) {
       setError(location.state.message);
     }
-  }, [location.state]);
+  }, [location.state, navigate, user]);
     const handleSubmit = async (e) => {
       e.preventDefault();
       setLoading(true);
       
       try {
-        const res = await axios.post(`${import.meta.env.VITE_API_URL}/signin`, {
+        await axios.post(`${import.meta.env.VITE_API_URL}/signin`, {
           email,
           password
         }, {
           withCredentials: true
         });
-        const data = res.data;
-
-        setUser(data.user);
+        await getUser(setUser); // Get user data from backend via /me route
         navigate("/my-blogs", {replace: true});
       } catch (error) {
         setError(error.response?.data?.message || "Login failed");

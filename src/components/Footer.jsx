@@ -46,9 +46,9 @@ function Footer() {
                 </form>
             </div>
         </div>
-        <div className="bg-gray-900 py-8 /95">
-            <div className="container mx-auto max-w-7xl px-4 md:px-6 lg:px-10 justify-center text-center">
-                <span className='text-sm'>Copyright © {new Date().getFullYear()} All rights reserved | Made with ❤️ by <a href="https://atifraza.is-great.net/" className="font-bold uppercase" target="_blank" >Atif</a></span>
+        <div className="bg-gray-900 py-8">
+            <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-10 justify-center text-center">
+                <span className='text-sm'>© {new Date().getFullYear()} | Made with ❤️ by <a href="https://atifraza.is-great.net/" className="font-bold uppercase" target="_blank" >Atif</a></span>
             </div>
         </div>
     </footer>
